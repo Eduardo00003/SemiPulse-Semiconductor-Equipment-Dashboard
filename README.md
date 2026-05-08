@@ -41,6 +41,7 @@ Reusable data, model, database, and export logic will live in `semipulse/`. Stre
 - `semipulse/sample_data.py` generates reproducible simulated sample CSVs.
 - `semipulse/database.py` and `semipulse/schema.py` initialize SQLite and load sample CSVs.
 - `semipulse/validation.py` validates required columns, timestamps, duplicates, numeric fields, and machine references.
+- `semipulse/data_loader.py` loads, cleans, validates, merges, and rebuilds SQLite from CSVs.
 - `app/`, `app/pages/`, `data/`, `db/`, `models/`, and `tests/` exist as the implementation skeleton.
 
 ## Baseline Flow
@@ -93,13 +94,12 @@ This writes simulated CSVs to `data/sample/`.
 ```bash
 source .venv/bin/activate
 python - <<'PY'
-from semipulse.database import initialize_database, load_sample_csvs_to_sqlite
-initialize_database(reset=True)
-print(load_sample_csvs_to_sqlite(reset=False))
+from semipulse.data_loader import rebuild_database_from_csvs
+print(rebuild_database_from_csvs(reset=True))
 PY
 ```
 
-Validation runs before sample CSV loading and stores blocking data quality issues in SQLite when issues are detected.
+Validation runs before writing cleaned sample CSV data and stores blocking data quality issues in SQLite when issues are detected.
 
 ## Prompt Execution
 

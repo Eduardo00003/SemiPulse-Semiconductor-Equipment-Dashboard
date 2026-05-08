@@ -1,4 +1,4 @@
-Status: NOT_STARTED
+Status: COMPLETED
 
 # 06 Data Cleaning and Merging
 

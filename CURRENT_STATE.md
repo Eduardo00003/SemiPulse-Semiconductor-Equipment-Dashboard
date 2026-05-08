@@ -16,11 +16,11 @@ Last updated: 2026-05-08
 - `db/schema.sql` defines the required SQLite MVP tables.
 - `semipulse/database.py` can initialize SQLite and load sample CSVs.
 - `semipulse/validation.py` validates CSV/DataFrame contracts and can persist data quality issues.
+- `semipulse/data_loader.py` cleans CSV data, builds a machine-level analytical table, and rebuilds SQLite from CSVs.
 
 ## What Is Missing
 
 - Streamlit app under `app/`.
-- Data cleaning and merging pipeline.
 - Feature engineering pipeline.
 - scikit-learn model training and risk scoring.
 - Dashboard pages.
@@ -85,7 +85,7 @@ Local environment note: `python` is not available before virtual environment act
 | Sample data | Implemented |
 | SQLite database | Implemented |
 | Data validation | Implemented |
-| Data cleaning and merging | Not implemented |
+| Data cleaning and merging | Implemented |
 | Feature engineering | Not implemented |
 | Model training | Not implemented |
 | Risk scoring | Not implemented |
