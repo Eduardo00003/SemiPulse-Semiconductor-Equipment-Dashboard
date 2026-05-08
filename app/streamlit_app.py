@@ -4,7 +4,15 @@ from __future__ import annotations
 
 import streamlit as st
 
-from app.pages import data_upload, defect_trends, downtime_analysis, machine_health, maintenance_risk, overview
+from app.pages import (
+    data_upload,
+    defect_trends,
+    downtime_analysis,
+    machine_health,
+    maintenance_risk,
+    model_performance,
+    overview,
+)
 
 
 PAGE_NAMES = [
@@ -46,6 +54,8 @@ def main() -> None:
         defect_trends.render()
     elif selected_page == "Downtime Analysis":
         downtime_analysis.render()
+    elif selected_page == "Model Performance":
+        model_performance.render()
     else:
         _render_placeholder(selected_page)
 

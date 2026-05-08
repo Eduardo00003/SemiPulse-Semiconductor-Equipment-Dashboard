@@ -25,11 +25,12 @@ Last updated: 2026-05-08
 - `app/pages/machine_health.py` shows sensor trends, fleet averages, machine details, and heuristic anomaly indicators.
 - `app/pages/maintenance_risk.py` ranks machines by simulated maintenance risk and provides filters/detail context.
 - `app/pages/defect_trends.py` and `app/pages/downtime_analysis.py` show simulated defect and downtime analysis.
+- `app/pages/model_performance.py` displays simulated model metrics, confusion matrix, metadata, and recall context.
 
 ## What Is Missing
 
 - Streamlit app under `app/`.
-- Remaining dashboard pages after Overview, Data Upload / Load, Machine Health, Maintenance Risk, Defect Trends, and Downtime Analysis.
+- Remaining dashboard page after Overview, Data Upload / Load, Machine Health, Maintenance Risk, Defect Trends, Downtime Analysis, and Model Performance.
 - CSV/JSON export helpers.
 - Docker support.
 
@@ -95,7 +96,7 @@ Local environment note: `python` is not available before virtual environment act
 | Feature engineering | Implemented |
 | Model training | Implemented |
 | Risk scoring | Implemented |
-| Streamlit dashboard | Overview, Data Upload, Machine Health, Maintenance Risk, Defect Trends, and Downtime Analysis implemented |
+| Streamlit dashboard | Overview, Data Upload, Machine Health, Maintenance Risk, Defect Trends, Downtime Analysis, and Model Performance implemented |
 | Exports | Not implemented |
 | Docker | Not implemented |
 

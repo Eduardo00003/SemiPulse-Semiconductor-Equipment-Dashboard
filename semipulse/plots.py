@@ -114,3 +114,16 @@ def prepare_risk_relationship(features_or_predictions: pd.DataFrame) -> pd.DataF
     if features_or_predictions.empty:
         return pd.DataFrame()
     return features_or_predictions.copy()
+
+
+def prepare_confusion_matrix(metrics: dict) -> pd.DataFrame:
+    """Prepare a labeled confusion matrix DataFrame."""
+
+    matrix = metrics.get("confusion_matrix") if metrics else None
+    if not matrix:
+        return pd.DataFrame()
+    return pd.DataFrame(
+        matrix,
+        index=["Actual low-risk", "Actual high-risk"],
+        columns=["Predicted low-risk", "Predicted high-risk"],
+    )
