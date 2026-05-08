@@ -40,6 +40,7 @@ Reusable data, model, database, and export logic will live in `semipulse/`. Stre
 - `semipulse/logging_utils.py` configures standard-library logging.
 - `semipulse/sample_data.py` generates reproducible simulated sample CSVs.
 - `semipulse/database.py` and `semipulse/schema.py` initialize SQLite and load sample CSVs.
+- `semipulse/validation.py` validates required columns, timestamps, duplicates, numeric fields, and machine references.
 - `app/`, `app/pages/`, `data/`, `db/`, `models/`, and `tests/` exist as the implementation skeleton.
 
 ## Baseline Flow
@@ -97,6 +98,8 @@ initialize_database(reset=True)
 print(load_sample_csvs_to_sqlite(reset=False))
 PY
 ```
+
+Validation runs before sample CSV loading and stores blocking data quality issues in SQLite when issues are detected.
 
 ## Prompt Execution
 

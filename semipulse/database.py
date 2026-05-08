@@ -12,6 +12,7 @@ import pandas as pd
 
 from semipulse.config import ensure_runtime_dirs, get_settings
 from semipulse.schema import REQUIRED_TABLES, SOURCE_TABLES, load_schema_sql
+from semipulse.validation import persist_validation_issues, validate_all_datasets
 
 
 def _utc_now() -> str:
@@ -130,6 +131,7 @@ def load_sample_csvs_to_sqlite(
     data_dir: Path | str | None = None,
     db_path: Path | str | None = None,
     reset: bool = False,
+    validate: bool = True,
 ) -> dict[str, int]:
     """Load generated sample CSVs into SQLite and record a pipeline run."""
 
@@ -142,6 +144,12 @@ def load_sample_csvs_to_sqlite(
     with get_connection(db_path) as connection:
         try:
             datasets = _read_sample_csvs(resolved_data_dir)
+            validation_result = validate_all_datasets(datasets) if validate else None
+            if validation_result is not None and validation_result.errors:
+                persist_validation_issues(connection, validation_result.issues, pipeline_run_id=None)
+                raise ValueError(
+                    f"Sample CSV validation failed with {len(validation_result.errors)} error(s)"
+                )
             _clear_tables(
                 connection,
                 [

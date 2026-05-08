@@ -1,4 +1,4 @@
-Status: NOT_STARTED
+Status: COMPLETED
 
 # 05 Data Validation
 
