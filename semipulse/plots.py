@@ -66,3 +66,9 @@ def prepare_fleet_sensor_averages(sensor_readings: pd.DataFrame) -> pd.DataFrame
         .sort_values("timestamp")
         .reset_index(drop=True)
     )
+
+
+def prepare_risk_level_counts(predictions: pd.DataFrame) -> pd.DataFrame:
+    """Prepare risk-level counts in high, medium, low order."""
+
+    return prepare_risk_distribution(predictions)

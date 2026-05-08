@@ -23,11 +23,12 @@ Last updated: 2026-05-08
 - `semipulse/pipeline.py` orchestrates the demo pipeline for tests and UI actions.
 - `app/pages/data_upload.py` provides sample loading, CSV upload, validation, previews, and pipeline rebuild actions.
 - `app/pages/machine_health.py` shows sensor trends, fleet averages, machine details, and heuristic anomaly indicators.
+- `app/pages/maintenance_risk.py` ranks machines by simulated maintenance risk and provides filters/detail context.
 
 ## What Is Missing
 
 - Streamlit app under `app/`.
-- Remaining dashboard pages after Overview, Data Upload / Load, and Machine Health.
+- Remaining dashboard pages after Overview, Data Upload / Load, Machine Health, and Maintenance Risk.
 - CSV/JSON export helpers.
 - Docker support.
 
@@ -93,7 +94,7 @@ Local environment note: `python` is not available before virtual environment act
 | Feature engineering | Implemented |
 | Model training | Implemented |
 | Risk scoring | Implemented |
-| Streamlit dashboard | Overview, Data Upload, and Machine Health implemented |
+| Streamlit dashboard | Overview, Data Upload, Machine Health, and Maintenance Risk implemented |
 | Exports | Not implemented |
 | Docker | Not implemented |
 
