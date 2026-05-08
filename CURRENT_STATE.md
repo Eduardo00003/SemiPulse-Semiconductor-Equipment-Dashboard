@@ -12,11 +12,11 @@ Last updated: 2026-05-08
 - `requirements.txt` exists with the MVP Python dependencies.
 - `semipulse/config.py` loads environment-variable settings with defaults.
 - `semipulse/logging_utils.py` provides a reusable logging setup helper.
+- `semipulse/sample_data.py` generates simulated machine, sensor, maintenance, and defect CSVs.
 
 ## What Is Missing
 
 - Streamlit app under `app/`.
-- Sample data generator.
 - SQLite schema and database helpers.
 - Validation and cleaning pipeline.
 - Feature engineering pipeline.
@@ -67,7 +67,7 @@ Local environment note: `python` is not available before virtual environment act
   - `sensor_readings.csv`
   - `maintenance_records.csv`
   - `defect_records.csv`
-- No generated CSV files exist yet.
+- Generated CSV files can be created under `data/sample/` with `python -m semipulse.sample_data`.
 
 ## Current Model Limitations
 
@@ -80,7 +80,7 @@ Local environment note: `python` is not available before virtual environment act
 | Capability | Status |
 | --- | --- |
 | Repo structure and config | Implemented |
-| Sample data | Not implemented |
+| Sample data | Implemented |
 | SQLite database | Not implemented |
 | Data validation | Not implemented |
 | Data cleaning and merging | Not implemented |

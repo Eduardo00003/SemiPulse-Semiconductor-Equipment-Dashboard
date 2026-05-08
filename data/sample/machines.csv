@@ -1,0 +1,51 @@
+machine_id,machine_type,manufacturer,facility_area,install_date,status,model,line_id,process_step,criticality,last_service_date,expected_lifetime_years
+M-0001,Deposition,Lam Research,Fab B,2023-10-18,active,DEP-871,L1,deposition,low,2024-10-28,13
+M-0002,Deposition,Lam Research,Cleanroom South,2019-10-18,active,DEP-215,L6,planarization,medium,2024-12-07,13
+M-0003,Deposition,Applied Materials,Cleanroom South,2019-07-06,active,DEP-498,L3,lithography,medium,2024-09-16,6
+M-0004,Inspection,TEL,Cleanroom North,2019-01-14,active,INS-781,L5,lithography,high,2024-11-06,13
+M-0005,Deposition,Lam Research,Fab A,2020-02-25,active,DEP-519,L3,etch,low,2024-10-03,11
+M-0006,Deposition,TEL,Cleanroom South,2018-08-22,active,DEP-392,L6,lithography,medium,2024-09-27,7
+M-0007,Etcher,Lam Research,Fab B,2021-06-25,active,ETC-303,L4,deposition,medium,2024-12-09,12
+M-0008,Deposition,Nikon,Fab B,2020-06-13,maintenance,DEP-848,L3,inspection,medium,2024-09-15,8
+M-0009,Deposition,Lam Research,Fab A,2022-11-12,standby,DEP-279,L5,etch,high,2024-09-29,11
+M-0010,Deposition,TEL,Cleanroom South,2021-06-06,active,DEP-512,L4,planarization,low,2024-11-29,6
+M-0011,Deposition,Lam Research,Fab B,2021-08-17,standby,DEP-608,L1,deposition,medium,2024-10-23,10
+M-0012,CMP,Lam Research,Fab B,2023-10-15,maintenance,CMP-127,L3,planarization,low,2024-11-26,9
+M-0013,Inspection,Nikon,Fab A,2018-03-16,standby,INS-152,L6,lithography,medium,2024-11-08,11
+M-0014,CMP,Applied Materials,Cleanroom South,2023-07-26,standby,CMP-697,L3,planarization,high,2024-11-21,7
+M-0015,Etcher,Nikon,Fab A,2022-04-12,maintenance,ETC-749,L5,planarization,low,2024-09-15,10
+M-0016,Etcher,Applied Materials,Cleanroom North,2018-07-18,active,ETC-501,L1,lithography,medium,2024-10-10,11
+M-0017,Lithography,KLA,Fab A,2020-08-03,active,LIT-206,L3,inspection,high,2024-11-01,11
+M-0018,Lithography,Lam Research,Cleanroom South,2021-07-08,active,LIT-800,L2,deposition,medium,2024-10-04,8
+M-0019,Etcher,Applied Materials,Cleanroom South,2023-11-09,active,ETC-509,L5,lithography,medium,2024-09-26,10
+M-0020,Etcher,Applied Materials,Cleanroom South,2020-12-17,active,ETC-781,L3,deposition,medium,2024-11-22,11
+M-0021,CMP,Nikon,Cleanroom North,2023-06-25,maintenance,CMP-175,L5,planarization,low,2024-12-07,9
+M-0022,Lithography,Lam Research,Fab A,2023-03-08,maintenance,LIT-192,L2,planarization,low,2024-11-23,13
+M-0023,CMP,Applied Materials,Fab B,2018-03-23,maintenance,CMP-631,L2,etch,high,2024-11-09,9
+M-0024,Deposition,Nikon,Fab A,2021-06-16,active,DEP-537,L5,planarization,high,2024-12-09,10
+M-0025,CMP,KLA,Fab B,2020-12-28,standby,CMP-398,L4,planarization,medium,2024-11-25,6
+M-0026,Inspection,Nikon,Cleanroom South,2022-02-05,active,INS-226,L2,planarization,low,2024-10-12,11
+M-0027,Lithography,TEL,Cleanroom North,2023-08-12,maintenance,LIT-753,L6,deposition,low,2024-10-18,13
+M-0028,Lithography,TEL,Fab A,2018-04-25,active,LIT-598,L4,lithography,high,2024-11-05,12
+M-0029,Lithography,TEL,Cleanroom South,2018-05-22,maintenance,LIT-361,L4,planarization,medium,2024-09-04,13
+M-0030,Etcher,Applied Materials,Fab A,2023-03-25,active,ETC-491,L6,inspection,high,2024-12-17,11
+M-0031,Inspection,TEL,Cleanroom South,2019-02-11,active,INS-566,L3,lithography,high,2024-11-19,11
+M-0032,Lithography,KLA,Fab A,2021-10-22,maintenance,LIT-771,L3,lithography,high,2024-09-10,7
+M-0033,Etcher,Nikon,Cleanroom South,2024-02-24,standby,ETC-237,L5,etch,medium,2024-10-06,12
+M-0034,Etcher,TEL,Fab B,2024-01-26,standby,ETC-798,L2,inspection,medium,2024-11-08,7
+M-0035,Etcher,Nikon,Fab A,2018-07-26,active,ETC-218,L1,deposition,low,2024-11-23,10
+M-0036,Deposition,Lam Research,Cleanroom North,2018-08-10,active,DEP-279,L6,inspection,high,2024-12-18,11
+M-0037,Etcher,Applied Materials,Fab A,2019-03-28,active,ETC-933,L1,lithography,medium,2024-12-12,9
+M-0038,Deposition,TEL,Cleanroom South,2021-03-15,active,DEP-357,L6,inspection,low,2024-10-20,10
+M-0039,Deposition,KLA,Fab A,2023-06-07,maintenance,DEP-226,L5,planarization,high,2024-12-08,10
+M-0040,Inspection,Lam Research,Cleanroom South,2023-03-23,active,INS-520,L4,deposition,low,2024-10-12,6
+M-0041,Inspection,TEL,Cleanroom South,2022-07-26,active,INS-309,L3,planarization,medium,2024-09-11,12
+M-0042,Deposition,TEL,Fab B,2019-09-08,active,DEP-436,L6,planarization,medium,2024-09-08,12
+M-0043,CMP,Applied Materials,Fab A,2022-08-26,active,CMP-312,L6,deposition,high,2024-09-08,6
+M-0044,Etcher,Applied Materials,Cleanroom North,2018-11-22,active,ETC-231,L2,inspection,medium,2024-09-12,7
+M-0045,Inspection,Applied Materials,Fab A,2018-09-07,active,INS-355,L4,etch,low,2024-10-26,6
+M-0046,Etcher,Nikon,Fab A,2019-12-17,standby,ETC-147,L3,planarization,medium,2024-09-26,9
+M-0047,Lithography,KLA,Cleanroom North,2019-03-23,maintenance,LIT-886,L5,inspection,low,2024-11-01,7
+M-0048,Lithography,TEL,Fab A,2018-11-05,maintenance,LIT-613,L6,planarization,low,2024-12-27,8
+M-0049,CMP,KLA,Fab A,2018-08-14,active,CMP-849,L1,etch,high,2024-10-09,6
+M-0050,Inspection,KLA,Cleanroom South,2019-03-03,active,INS-980,L2,inspection,high,2024-10-16,11

@@ -38,6 +38,7 @@ Reusable data, model, database, and export logic will live in `semipulse/`. Stre
 
 - `semipulse/config.py` loads environment-driven runtime settings.
 - `semipulse/logging_utils.py` configures standard-library logging.
+- `semipulse/sample_data.py` generates reproducible simulated sample CSVs.
 - `app/`, `app/pages/`, `data/`, `db/`, `models/`, and `tests/` exist as the implementation skeleton.
 
 ## Baseline Flow
@@ -75,6 +76,15 @@ docker compose up --build
 At the prompt-01 baseline, these commands are documented targets. The implementation modules are created in later prompts.
 
 On this local macOS environment, use `python3` for creating the virtual environment. After activation, `.venv/bin/python` provides the `python` command used by later project commands.
+
+## Generate Sample Data
+
+```bash
+source .venv/bin/activate
+python -m semipulse.sample_data
+```
+
+This writes simulated CSVs to `data/sample/`.
 
 ## Prompt Execution
 
