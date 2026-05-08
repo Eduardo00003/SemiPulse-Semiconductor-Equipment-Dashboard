@@ -18,7 +18,7 @@ The project is designed as a portfolio-ready demonstration of applied data engin
 Important limitation:
 - All datasets are simulated.
 - Model results do not represent real semiconductor factory performance.
-- Any metric such as 84 percent recall should be described as simulated-data performance only.
+- Any model metric must be described as simulated-data performance only.
 
 ---
 
@@ -53,9 +53,9 @@ risk predictions + model metrics
 Streamlit dashboard + exports
 ```
 
-The app should keep heavy logic outside Streamlit page files.
+The app keeps heavy logic outside Streamlit page files.
 
-Recommended separation:
+Separation:
 - `app/` contains Streamlit UI.
 - `semipulse/` contains reusable pipeline, model, database, and plotting modules.
 - `data/` contains sample/raw/processed files.
@@ -65,7 +65,7 @@ Recommended separation:
 
 ---
 
-## Recommended Repository Layout
+## Repository Layout
 ```text
 semipulse-predictive-maintenance-dashboard/
   app/
@@ -114,6 +114,9 @@ semipulse-predictive-maintenance-dashboard/
     test_features.py
     test_model.py
     test_database.py
+    test_data_loader.py
+    test_pipeline.py
+    test_exports.py
 
   prompts/
 
@@ -263,7 +266,7 @@ Expected dataset files:
 - `defect_records.csv`
 
 ### 2. Validate Data
-Validation should check:
+Validation checks:
 - required columns,
 - timestamp parsing,
 - numeric field parsing,
@@ -272,10 +275,10 @@ Validation should check:
 - missing values,
 - invalid categories.
 
-Validation should not crash the whole app for one bad row. It should return a structured issue report.
+Validation returns a structured issue report instead of crashing the whole app for one bad row.
 
 ### 3. Clean Data
-Cleaning should standardize:
+Cleaning standardizes:
 - column names,
 - machine IDs,
 - timestamps,
@@ -284,16 +287,16 @@ Cleaning should standardize:
 - missing values.
 
 ### 4. Store in SQLite
-Cleaned data should be written to SQLite using transaction-safe helpers where practical.
+Cleaned data is written to SQLite through shared database helpers.
 
 ### 5. Generate Features
-The feature pipeline should produce `machine_features`.
+The feature pipeline produces `machine_features`.
 
 ### 6. Train / Load Model
-The ML pipeline should train or load a scikit-learn model.
+The ML pipeline trains or loads a scikit-learn model.
 
 ### 7. Generate Predictions
-Predictions should include risk score, predicted failure flag, and risk level.
+Predictions include risk score, predicted failure flag, and risk level.
 
 ### 8. Display Dashboard
 Streamlit reads from SQLite and model output tables.
@@ -343,16 +346,16 @@ Streamlit reads from SQLite and model output tables.
 - `criticality`
 - `facility_area`
 
-Categorical features should be encoded inside the scikit-learn pipeline using `OneHotEncoder` or equivalent.
+Categorical features are encoded inside the scikit-learn pipeline using `OneHotEncoder`.
 
 ---
 
 ## Machine Learning Design
 
 ### Model Type
-The MVP should use scikit-learn.
+The MVP uses scikit-learn.
 
-Recommended baseline:
+Implemented baseline:
 ```python
 RandomForestClassifier(
     n_estimators=200,
@@ -366,7 +369,7 @@ Possible alternatives:
 - Gradient Boosting Classifier
 
 ### Target Label
-The binary target should represent whether a machine is likely to require maintenance or experience failure within a configured prediction window.
+The binary target represents whether a machine is likely to require maintenance or experience failure within a configured prediction window.
 
 Default:
 - 14-day prediction window
@@ -389,14 +392,14 @@ Optional:
 - ROC-AUC when probability outputs and class balance allow it
 
 ### Why Recall Matters
-For predictive maintenance, missing a truly high-risk machine can be costly. Therefore, the dashboard should explain recall and emphasize it over raw accuracy.
+For predictive maintenance, missing a truly high-risk machine can be costly. Therefore, the dashboard explains recall and emphasizes it over raw accuracy.
 
 ### Model Artifacts
-Recommended files:
+Artifact files:
 - `models/risk_model.pkl`
 - `models/model_metadata.json`
 
-`model_metadata.json` should include:
+`model_metadata.json` includes:
 - model type,
 - model run ID,
 - training timestamp,
@@ -484,7 +487,7 @@ Supported exports:
 - model metrics JSON or CSV,
 - selected Data Explorer table CSV.
 
-Recommended risk export columns:
+Risk export columns include:
 - `rank`
 - `machine_id`
 - `machine_type`
@@ -501,7 +504,7 @@ Recommended risk export columns:
 ---
 
 ## Configuration
-Recommended environment variables:
+Environment variables:
 
 ```text
 SEMIPULSE_DB_PATH=db/semipulse.db
@@ -512,7 +515,7 @@ SEMIPULSE_RANDOM_SEED=42
 SEMIPULSE_PREDICTION_WINDOW_DAYS=14
 ```
 
-These should be documented in `.env.example`.
+These are documented in `.env.example`.
 
 ---
 
@@ -569,7 +572,7 @@ Compose persists `/app/data`, `/app/db`, and `/app/models` with Docker-managed n
 ## Testing Strategy
 
 ### Unit Tests
-Recommended tests:
+Implemented tests:
 - `test_validation.py`
   - required columns,
   - invalid timestamps,
@@ -628,7 +631,7 @@ load sample data
 ---
 
 ## Portfolio Positioning
-SemiPulse should demonstrate:
+SemiPulse demonstrates:
 - Python data engineering,
 - Pandas ETL,
 - SQLite persistence,
@@ -639,14 +642,14 @@ SemiPulse should demonstrate:
 - Dockerization,
 - clear documentation.
 
-Recommended resume title:
+Resume title:
 
 ```text
 SemiPulse: Predictive Maintenance Dashboard
 Python, Pandas, scikit-learn, Streamlit, SQLite, Matplotlib, Docker
 ```
 
-Recommended short description:
+Short description:
 
 ```text
 Built an end-to-end predictive maintenance dashboard for simulated semiconductor equipment, combining SQLite-backed ETL, Pandas feature engineering, scikit-learn risk scoring, and Streamlit visual analytics for machine health, downtime, defect trends, and maintenance prioritization.

@@ -28,11 +28,6 @@ PAGE_NAMES = [
 ]
 
 
-def _render_placeholder(page_name: str) -> None:
-    st.title(page_name)
-    st.info("This page is planned in the next implementation prompts.")
-
-
 def main() -> None:
     st.set_page_config(
         page_title="SemiPulse",
@@ -60,7 +55,7 @@ def main() -> None:
     elif selected_page == "Data Explorer":
         data_explorer.render()
     else:
-        _render_placeholder(selected_page)
+        st.error(f"Unknown page: {selected_page}")
 
 
 if __name__ == "__main__":
