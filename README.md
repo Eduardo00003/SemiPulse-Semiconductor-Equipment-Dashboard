@@ -2,6 +2,10 @@
 
 SemiPulse is a simple dashboard demo for predictive maintenance. In plain English, it pretends to watch semiconductor factory machines and helps decide which machines may need attention first.
 
+## Why I Built This
+
+I built SemiPulse out of curiosity about how software tools can help engineers understand complex systems faster. I wanted to learn more about the path from raw data to useful engineering decisions, including validation, debugging, automation, and performance-focused analysis. I also wanted hands-on practice building a project that connects software engineering with semiconductor-style equipment data.
+
 This project shows a full data workflow:
 
 1. Create simulated factory machine data.
