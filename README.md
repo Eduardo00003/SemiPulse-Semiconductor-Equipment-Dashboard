@@ -1,68 +1,69 @@
 # SemiPulse: Predictive Maintenance Dashboard
 
-SemiPulse is a portfolio-ready predictive maintenance dashboard for simulated semiconductor manufacturing equipment. It generates or loads equipment CSVs, validates and cleans them, persists the data in SQLite, engineers machine-level features, trains a local scikit-learn risk model, and presents operational views in Streamlit.
+SemiPulse is a simple dashboard demo for predictive maintenance. In plain English, it pretends to watch semiconductor factory machines and helps decide which machines may need attention first.
 
-## Simulated Data Notice
+This project shows a full data workflow:
 
-All datasets in this project are simulated. Model metrics, including recall, precision, F1, accuracy, and ROC-AUC, are simulated-data performance only. SemiPulse does not claim real semiconductor factory accuracy.
+1. Create simulated factory machine data.
+2. Clean and check the data.
+3. Store it in a SQLite database.
+4. Build machine-level features.
+5. Train a local scikit-learn model.
+6. Show the results in a Streamlit dashboard.
 
-## What It Includes
+## Important Note
 
-- Reproducible simulated datasets for machines, sensor readings, maintenance records, and defect records.
-- CSV validation for required columns, timestamps, numeric values, duplicate IDs, and orphan machine references.
-- SQLite persistence for raw/cleaned entities, machine features, model runs, predictions, pipeline runs, and data quality issues.
-- Pandas feature engineering for sensors, rolling windows, maintenance history, downtime, defects, and machine metadata.
-- Local `RandomForestClassifier` training with saved model and metadata artifacts.
-- Streamlit dashboard pages for fleet overview, data loading, machine health, maintenance risk, defect trends, downtime analysis, model performance, and data exploration.
-- CSV/JSON exports for risk rankings, machine features, model metrics, and selected SQLite tables.
-- Docker Compose support for reproducible local execution.
+All data in this project is simulated. The model metrics are also simulated-data results. This project does not claim real semiconductor factory accuracy.
 
-## Architecture
+## How To Run It
 
-```text
-CSV / generated sample data
-        -> validation + cleaning
-        -> SQLite tables
-        -> feature engineering
-        -> scikit-learn model training / loading
-        -> risk predictions + model metrics
-        -> Streamlit dashboard + exports
+### Option 1: Run With Docker
+
+This is the simplest way if Docker Desktop is installed.
+
+1. Open a terminal in this project folder.
+2. Run:
+
+```bash
+docker compose up --build
 ```
 
-Reusable data, model, database, plotting, and export logic lives in `semipulse/`. Streamlit UI code lives in `app/`.
+3. Open this in your browser:
 
-## Project Structure
+```text
+http://localhost:8501
+```
 
-- `app/streamlit_app.py` launches the Streamlit dashboard.
-- `app/pages/` contains Overview, Data Upload / Load, Machine Health, Maintenance Risk, Defect Trends, Downtime Analysis, Model Performance, and Data Explorer pages.
-- `semipulse/sample_data.py` generates simulated sample CSVs.
-- `semipulse/validation.py`, `semipulse/data_loader.py`, and `semipulse/database.py` validate, clean, and persist data.
-- `semipulse/features.py` builds machine-level features.
-- `semipulse/model.py`, `semipulse/predict.py`, and `semipulse/metrics.py` train and score the local model.
-- `semipulse/pipeline.py` orchestrates the demo flow.
-- `semipulse/exports.py` supports dashboard downloads.
-- `db/schema.sql` defines the SQLite schema.
-- `tests/` contains pytest coverage for validation, loading, features, model training, pipeline orchestration, database helpers, and exports.
+4. To stop it, press `Ctrl-C`, then run:
 
-## Local Setup
+```bash
+docker compose down
+```
+
+### Option 2: Run With Python
+
+Use this if you want to run it directly on your machine.
+
+1. Create and activate a virtual environment:
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
+```
+
+2. Install the packages:
+
+```bash
 pip install -r requirements.txt
 ```
 
-On this macOS environment, `python3` is available before virtual environment activation. After activation, use the venv `python`.
-
-## Run the Pipeline
-
-Generate sample data:
+3. Generate the demo data:
 
 ```bash
 python -m semipulse.sample_data
 ```
 
-Run the full demo pipeline:
+4. Build the database, train the model, and create predictions:
 
 ```bash
 python - <<'PY'
@@ -71,54 +72,118 @@ print(run_demo_pipeline(generate_data=False, reset_database=True, train_model=Tr
 PY
 ```
 
-The pipeline rebuilds SQLite, writes `machine_features`, trains a local model, writes `models/risk_model.pkl` and `models/model_metadata.json`, and stores risk predictions in SQLite.
-
-Individual commands are also available:
-
-```bash
-python -m semipulse.features
-python -m semipulse.model
-```
-
-## Launch Dashboard
+5. Start the dashboard:
 
 ```bash
 streamlit run app/streamlit_app.py
 ```
 
-The dashboard is available at `http://localhost:8501` by default.
+6. Open:
 
-## Dashboard Pages
-
-- Overview: fleet KPIs, risk summary, downtime, defects, and setup status.
-- Data Upload / Load: sample generation, CSV upload, validation, previews, and rebuild actions.
-- Machine Health: sensor trends, fleet averages, machine details, and anomaly indicators.
-- Maintenance Risk: ranked machine risk, filters, and detail context.
-- Defect Trends: defect volume over time, by machine, by process step, and by severity.
-- Downtime Analysis: downtime by machine, type, maintenance category, and risk band.
-- Model Performance: simulated-data metrics, confusion matrix, metadata, and recall context.
-- Data Explorer: SQLite table previews, text search, row limits, and exports.
-
-## Exports
-
-The Data Explorer page provides:
-
-- ranked risk predictions CSV,
-- machine features CSV,
-- model metrics JSON,
-- selected table CSV.
-
-The same export logic is available in `semipulse/exports.py` for tests or scripts.
-
-## Docker
-
-```bash
-docker compose up --build
+```text
+http://localhost:8501
 ```
 
-The dashboard is available at `http://localhost:8501` by default. Override the host port with `SEMIPULSE_STREAMLIT_PORT`.
+## What A Recruiter Is Seeing
 
-Compose uses Docker-managed volumes for `/app/data`, `/app/db`, and `/app/models` so generated sample data, SQLite state, and model artifacts persist without requiring host-directory mounts.
+This is not just a static chart. It is a working data application. The app creates data, validates it, stores it, trains a model, scores machine risk, and lets the user explore the results.
+
+The dashboard is designed to answer practical business questions:
+
+- Which machines look risky?
+- Which machines have more downtime?
+- Which machines show unusual sensor behavior?
+- Where are defects showing up?
+- How well did the model perform on the simulated data?
+- Can the data be exported for follow-up analysis?
+
+## Dashboard Tour
+
+### Overview
+
+![SemiPulse Overview](docs/images/overview.png)
+
+The Overview page is the executive summary. It shows the number of machines, active machines, high-risk machines, total downtime, defect count, and the latest model used.
+
+### Data Upload / Load
+
+![Data Upload and Load](docs/images/data-upload.png)
+
+This page is where the demo data enters the system. A user can generate sample data, upload CSV files, validate the data, preview tables, and rebuild the database.
+
+### Machine Health
+
+![Machine Health](docs/images/machine-health.png)
+
+This page focuses on one machine at a time. It shows sensor trends such as temperature, vibration, pressure, and power draw so a user can inspect machine behavior.
+
+### Maintenance Risk
+
+![Maintenance Risk](docs/images/maintenance-risk.png)
+
+This page ranks machines by risk score. A maintenance team would use this view to decide which machines should be checked first.
+
+### Defect Trends
+
+![Defect Trends](docs/images/defect-trends.png)
+
+This page shows where defects are happening in the simulated manufacturing process. It helps connect production quality issues with machine risk.
+
+### Downtime Analysis
+
+![Downtime Analysis](docs/images/downtime-analysis.png)
+
+This page shows which machines and machine types are creating downtime. It helps explain where maintenance time is being spent.
+
+### Model Performance
+
+![Model Performance](docs/images/model-performance.png)
+
+This page shows how the model performed on the simulated data. It is intentionally honest: the current simulated run has weak recall, so the app does not pretend the model is production-ready.
+
+### Data Explorer
+
+![Data Explorer](docs/images/data-explorer.png)
+
+This page lets a user inspect the database tables directly and download CSV or JSON exports, including risk rankings, machine features, model metrics, and selected tables.
+
+## What Is Built
+
+- Simulated machine, sensor, maintenance, and defect datasets.
+- CSV validation for missing columns, bad timestamps, duplicate IDs, numeric issues, and machine ID mismatches.
+- SQLite database tables for machines, sensor readings, maintenance records, defect records, features, model runs, predictions, pipeline runs, and data quality issues.
+- Feature engineering with Pandas.
+- Local scikit-learn `RandomForestClassifier` model.
+- Streamlit dashboard with eight pages.
+- CSV and JSON exports.
+- Docker support for local reproducible execution.
+- Pytest coverage for data validation, database helpers, feature generation, model training, exports, pipeline orchestration, and Streamlit app rendering.
+
+## Architecture
+
+```text
+CSV / generated sample data
+        -> validation + cleaning
+        -> SQLite tables
+        -> feature engineering
+        -> scikit-learn model training
+        -> risk predictions + model metrics
+        -> Streamlit dashboard + exports
+```
+
+## Key Files
+
+- `app/streamlit_app.py`: starts the dashboard.
+- `app/pages/`: dashboard pages.
+- `semipulse/sample_data.py`: creates simulated data.
+- `semipulse/data_loader.py`: cleans data and rebuilds SQLite.
+- `semipulse/features.py`: creates machine-level features.
+- `semipulse/model.py`: trains the risk model.
+- `semipulse/predict.py`: writes risk predictions.
+- `semipulse/exports.py`: creates CSV and JSON downloads.
+- `db/schema.sql`: SQLite database schema.
+- `Dockerfile`: packages the app.
+- `docker-compose.yml`: runs the app locally with Docker.
 
 ## Tests
 
@@ -126,12 +191,11 @@ Compose uses Docker-managed volumes for `/app/data`, `/app/db`, and `/app/models
 pytest
 ```
 
-The current test suite covers the local data pipeline, validation rules, SQLite helpers, feature generation, model training, pipeline orchestration, export helpers, and Streamlit app import/render behavior.
+The current test suite verifies the data pipeline, model pipeline, exports, and Streamlit app startup.
 
-## Deployment Notes
+## Limitations
 
-For a portfolio demo, deploy the Streamlit app with the entrypoint `app/streamlit_app.py`. Streamlit Community Cloud, Render, Railway, and Fly.io can run this app as long as `requirements.txt` is installed and environment variables from `.env.example` are configured. Generate sample data from the UI or run the pipeline commands before demoing persisted results.
-
-## Prompt Execution
-
-Development is driven by the prompt files in `prompts/`, in numeric order from `01_project-freeze-and-docs.md` through `17_docs-qa-polish.md`. Each prompt includes acceptance criteria and verification commands, and should only be marked `COMPLETED` after those checks pass or a documented environment limitation is captured honestly.
+- The data is simulated.
+- The model results are simulated-data performance only.
+- SQLite is used for a local demo, not high-concurrency production traffic.
+- The dashboard is a portfolio MVP, not a production factory system.
