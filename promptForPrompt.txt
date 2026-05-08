@@ -1,0 +1,379 @@
+# promptForPrompt.txt — SemiPulse Prompt Generator Spec
+
+## CRITICAL REQUIREMENTS
+You are an expert Python data engineer, machine learning engineer, Streamlit developer, and portfolio project architect.
+
+**CRITICAL:** Generate a sequence of incremental development prompt files for an IDE agent such as Cursor or Codex.
+
+These prompt files will be used to build **SemiPulse: Predictive Maintenance Dashboard MVP** from the requirements and master prompt.
+
+**Source of truth:**
+- Requirements: provided by the user in chat.
+- Master prompt file: `MasterPrompt.md`.
+- Technical guide: `TECHNICAL.md`.
+
+---
+
+## PROMPT FILE GENERATION POLICY NO MISSING FILES
+You MUST generate every prompt file required to complete the implementation plan.
+
+Target output directory:
+```text
+/prompts
+```
+
+Required baseline set:
+1. `01_project-freeze-and-docs.md`
+2. `02_repo-structure-and-config.md`
+3. `03_sample-data-generator.md`
+4. `04_sqlite-schema-pipeline.md`
+5. `05_data-validation.md`
+6. `06_data-cleaning-and-merging.md`
+7. `07_feature-engineering.md`
+8. `08_model-training-risk-scoring.md`
+9. `09_streamlit-overview.md`
+10. `10_data-upload-dashboard.md`
+11. `11_machine-health-dashboard.md`
+12. `12_maintenance-risk-dashboard.md`
+13. `13_defect-downtime-analysis.md`
+14. `14_model-performance-view.md`
+15. `15_data-explorer-exports.md`
+16. `16_docker-and-deployment.md`
+17. `17_docs-qa-polish.md`
+
+If response length is a constraint, generate prompt files in multiple batches:
+- Batch size: 3 to 5 prompt files per response.
+- Continue until all required prompt files exist.
+- Never skip a file because of output limits.
+
+---
+
+## GRANULARITY
+- Each prompt file must implement one functional slice.
+- Keep each prompt small, testable, and easy to verify.
+- Backend/data pipeline logic must be separated from Streamlit UI logic.
+- If a prompt becomes too large, split it into sub-prompts.
+
+Sub-prompt naming examples:
+- `07a_sensor-features.md`
+- `07b_maintenance-defect-features.md`
+- `08a_training-pipeline.md`
+- `08b_prediction-storage.md`
+- `12a_risk-table-ui.md`
+- `12b_machine-detail-risk-panel.md`
+
+When sub-prompts are created, also output an updated **IMPLEMENTATION EXECUTION ORDER** section that includes the new filenames in sequence.
+
+---
+
+## PROMPT PROGRESS MARKING REQUIRED
+Every prompt file MUST start with this header at the very top:
+
+```text
+Status: NOT_STARTED
+```
+
+Allowed values:
+```text
+NOT_STARTED | IN_PROGRESS | COMPLETED
+```
+
+Rules:
+- If the IDE agent starts a prompt but does not finish, set `Status: IN_PROGRESS`.
+- Only set `Status: COMPLETED` when:
+  - all acceptance criteria are met,
+  - all tests or verification commands pass,
+  - the system remains runnable,
+  - the original baseline flow still works.
+
+---
+
+## REQUIRED PROMPT FILE SECTIONS
+Each prompt file MUST include these sections in this exact order:
+
+1. Goal
+2. Files to create/modify exact paths
+3. Steps
+4. API or Function Contract only if interfaces are added or changed
+5. Acceptance criteria
+6. Tests what to test and how to run
+7. Stop and verify commands and expected results
+8. Do not break existing behavior
+
+---
+
+## CRITICAL OUTPUT RULES
+When you produce prompt files:
+- Output a numbered list of prompt filenames in order.
+- Each prompt file must be standalone.
+- Each prompt file must include exact paths.
+- Each prompt file must include commands to run locally.
+- Each prompt file must include expected results.
+- Each prompt file must keep the app runnable.
+
+Incremental development only:
+- Each prompt adds one functional slice.
+- After each prompt, run tests/build, fix failures, then continue.
+
+---
+
+## CRITICAL PROJECT CONSTRAINTS MUST BE ENFORCED IN PROMPTS
+
+### Prototype baseline preservation
+- Existing demo codebase must remain runnable at all times.
+- Do not delete the prototype.
+- Preserve the baseline flow continuously:
+  - load sample data,
+  - build SQLite database,
+  - generate features,
+  - score machine risk,
+  - launch Streamlit dashboard.
+- Maintain a frozen reference tag or branch: `prototype-v0`.
+
+### Simulated data honesty
+- The dataset is simulated.
+- Do not claim real semiconductor factory accuracy.
+- Any model metric, including 84 percent recall, must be labeled as simulated-data performance.
+
+### No large AI model needed
+- Do not download a large AI model.
+- Do not use OpenAI or external LLMs for the ML pipeline.
+- Use scikit-learn for predictive maintenance modeling.
+- Recommended baseline: `RandomForestClassifier`.
+- Use `joblib` for saving/loading local model artifacts.
+
+### Storage
+- Use SQLite for MVP persistence.
+- Do not rely only on in-memory DataFrames.
+- Store cleaned tables, features, predictions, model runs, and data quality issues in SQLite.
+- Store model artifacts in `models/`.
+- Store sample data in `data/sample/` or `data/raw/`.
+
+### Streamlit UI
+- Use Streamlit as the dashboard framework.
+- Keep Streamlit UI code in `app/`.
+- Keep reusable logic in `semipulse/`.
+- Do not mix heavy data processing directly into page code.
+
+### Reproducibility
+- Use fixed random seed for sample data and model training.
+- Make file paths configurable through environment variables.
+- Include tests for validation, feature engineering, database helpers, and model pipeline.
+
+---
+
+## TECH STACK ASSUMPTIONS USE UNLESS REPO CONTRADICTS
+- Python 3.11+
+- Pandas
+- NumPy
+- scikit-learn
+- Streamlit
+- SQLite
+- Matplotlib
+- joblib
+- pytest
+- python-dotenv
+- Docker
+
+---
+
+## REQUIRED DOMAIN MODEL MVP
+Minimum entities/tables:
+- `machines`
+- `sensor_readings`
+- `maintenance_records`
+- `defect_records`
+- `machine_features`
+- `risk_predictions`
+- `model_runs`
+- `pipeline_runs`
+- `data_quality_issues`
+
+---
+
+## REQUIRED DATASET CONTRACT
+
+### Machine metadata required columns
+- `machine_id`
+- `machine_type`
+- `manufacturer`
+- `facility_area`
+- `install_date`
+- `status`
+
+### Sensor readings required columns
+- `reading_id`
+- `machine_id`
+- `timestamp`
+- `temperature`
+- `vibration`
+- `pressure`
+- `power_draw`
+
+### Maintenance records required columns
+- `maintenance_id`
+- `machine_id`
+- `maintenance_date`
+- `maintenance_type`
+- `downtime_hours`
+
+### Defect records required columns
+- `defect_id`
+- `machine_id`
+- `timestamp`
+- `defect_count`
+- `batch_id`
+
+---
+
+## REQUIRED FEATURE SET MVP SLICES
+Your generated prompt files must build these in order:
+
+1. Freeze prototype baseline and docs.
+2. Create repo structure and config.
+3. Build sample data generator.
+4. Build SQLite schema and database pipeline.
+5. Build CSV validation.
+6. Build data cleaning and merging.
+7. Build feature engineering.
+8. Build model training and risk scoring.
+9. Build Streamlit overview shell.
+10. Build data upload/load dashboard.
+11. Build machine health dashboard.
+12. Build maintenance risk dashboard.
+13. Build defect and downtime analysis.
+14. Build model performance view.
+15. Build Data Explorer and exports.
+16. Build Docker and deployment support.
+17. Finalize docs and QA polish.
+
+---
+
+## REQUIRED FUNCTIONAL DETAILS BY SLICE
+
+### Sample data generator
+Must generate:
+- machine metadata,
+- sensor readings,
+- maintenance records,
+- defect records.
+
+Must include realistic simulated patterns:
+- vibration rises before failures,
+- temperature anomalies before service,
+- defect count increases near machine degradation,
+- downtime appears after maintenance events.
+
+### SQLite pipeline
+Must create and populate:
+- raw/cleaned machine records,
+- features,
+- predictions,
+- model metadata,
+- data quality issues.
+
+### Feature engineering
+Must include:
+- sensor aggregates,
+- rolling windows,
+- maintenance recency and downtime,
+- defect counts and severity,
+- machine age and metadata encodings.
+
+### ML pipeline
+Must include:
+- binary target label,
+- train/test split,
+- model training,
+- prediction probabilities as risk scores,
+- failure flags,
+- recall, precision, F1, accuracy, ROC-AUC if possible,
+- confusion matrix,
+- saved model artifact,
+- saved model metadata.
+
+### Dashboard
+Must include pages for:
+- Overview,
+- Data Upload / Load,
+- Machine Health,
+- Maintenance Risk,
+- Defect Trends,
+- Downtime Analysis,
+- Model Performance,
+- Data Explorer.
+
+### Exports
+Must include:
+- risk ranking CSV,
+- feature table CSV,
+- model metrics CSV or JSON,
+- selected table CSV.
+
+---
+
+## MANDATORY DO NOT BREAK RULE FOR EVERY PROMPT
+Every prompt file MUST end with a section titled:
+
+```text
+Do not break existing behavior
+```
+
+That section MUST include:
+
+```text
+After completing this prompt, confirm the original demo flow still works:
+- load sample data
+- build or open SQLite database
+- generate features
+- produce risk scores
+- launch Streamlit dashboard
+```
+
+If the prompt touches data loading, feature engineering, model training, or dashboard pages, explicitly include a smoke test path.
+
+---
+
+## STANDARD LOCAL COMMANDS TO INCLUDE WHERE RELEVANT
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+pytest
+python -m semipulse.sample_data
+python -m semipulse.model
+streamlit run app/streamlit_app.py
+```
+
+Docker commands:
+```bash
+docker compose up --build
+```
+
+---
+
+## DELIVERABLE PROMPT SEQUENCE
+Generate the full prompt sequence for the IDE agent.
+
+For each prompt file you output:
+- Start with `Status: NOT_STARTED`.
+- Include the required sections in the required order.
+- Keep the slice small.
+- Include exact files.
+- Include commands.
+- Include expected results.
+- Repeat the critical constraints when relevant.
+
+---
+
+## SANDWICH METHOD REPEAT CRITICAL CONSTRAINTS
+Remember:
+- Incremental slices only.
+- Keep baseline runnable.
+- Simulated data must be labeled honestly.
+- SQLite persistence is required.
+- scikit-learn ML only; no large AI model download.
+- Streamlit UI separate from reusable Python modules.
+- Fixed random seed for reproducibility.
+- Tests after every prompt.
+- Portfolio quality matters.

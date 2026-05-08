@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environment files
+.env
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Runtime databases and generated artifacts
+*.db
+*.db-shm
+*.db-wal
+db/*.sqlite
+models/*.pkl
+models/*.joblib
+models/model_metadata.json
+
+# Logs
+*.log
+logs/
+
+# OS and editor files
+.DS_Store
+.idea/
+.vscode/
