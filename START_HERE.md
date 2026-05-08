@@ -13,6 +13,7 @@ This document is the navigation map for SemiPulse. At the prompt-01 baseline, mo
 
 - Streamlit entrypoint: `app/streamlit_app.py`
 - Overview page: `app/pages/overview.py`
+- Data Upload / Load page: `app/pages/data_upload.py`
 - Config: `semipulse/config.py`
 - Logging helpers: `semipulse/logging_utils.py`
 - Sample data generator: `semipulse/sample_data.py`
@@ -25,6 +26,7 @@ This document is the navigation map for SemiPulse. At the prompt-01 baseline, mo
 - Model training: `semipulse/model.py`
 - Prediction/risk scoring: `semipulse/predict.py`
 - Metrics: `semipulse/metrics.py`
+- Pipeline orchestration: `semipulse/pipeline.py`
 
 ## Planned App and Pipeline Files
 

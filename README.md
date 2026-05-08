@@ -45,6 +45,8 @@ Reusable data, model, database, and export logic will live in `semipulse/`. Stre
 - `semipulse/features.py` generates model-ready machine features and writes `machine_features`.
 - `semipulse/model.py`, `semipulse/predict.py`, and `semipulse/metrics.py` train a local scikit-learn model, score risk, and store predictions.
 - `app/streamlit_app.py` launches the Streamlit shell and Overview page.
+- `semipulse/pipeline.py` orchestrates sample generation, database rebuild, feature generation, and model scoring.
+- `app/pages/data_upload.py` provides the Data Upload / Load dashboard page.
 - `app/`, `app/pages/`, `data/`, `db/`, `models/`, and `tests/` exist as the implementation skeleton.
 
 ## Baseline Flow
@@ -128,6 +130,8 @@ This trains a local `RandomForestClassifier` on simulated features, writes `mode
 source .venv/bin/activate
 streamlit run app/streamlit_app.py
 ```
+
+The Data Upload / Load page can generate sample data, validate CSVs, preview datasets, and rebuild the SQLite-backed demo pipeline.
 
 ## Prompt Execution
 

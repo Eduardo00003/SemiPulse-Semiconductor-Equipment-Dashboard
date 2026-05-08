@@ -20,11 +20,13 @@ Last updated: 2026-05-08
 - `semipulse/features.py` generates machine-level model features and stores `machine_features`.
 - `semipulse/model.py`, `semipulse/predict.py`, and `semipulse/metrics.py` train a local scikit-learn model, save artifacts, and store risk predictions.
 - `app/streamlit_app.py` and `app/pages/overview.py` provide the Streamlit shell and Overview dashboard.
+- `semipulse/pipeline.py` orchestrates the demo pipeline for tests and UI actions.
+- `app/pages/data_upload.py` provides sample loading, CSV upload, validation, previews, and pipeline rebuild actions.
 
 ## What Is Missing
 
 - Streamlit app under `app/`.
-- Remaining dashboard pages after Overview.
+- Remaining dashboard pages after Overview and Data Upload / Load.
 - CSV/JSON export helpers.
 - Docker support.
 
@@ -90,7 +92,7 @@ Local environment note: `python` is not available before virtual environment act
 | Feature engineering | Implemented |
 | Model training | Implemented |
 | Risk scoring | Implemented |
-| Streamlit dashboard | Overview implemented |
+| Streamlit dashboard | Overview and Data Upload implemented |
 | Exports | Not implemented |
 | Docker | Not implemented |
 
