@@ -42,6 +42,7 @@ Reusable data, model, database, and export logic will live in `semipulse/`. Stre
 - `semipulse/database.py` and `semipulse/schema.py` initialize SQLite and load sample CSVs.
 - `semipulse/validation.py` validates required columns, timestamps, duplicates, numeric fields, and machine references.
 - `semipulse/data_loader.py` loads, cleans, validates, merges, and rebuilds SQLite from CSVs.
+- `semipulse/features.py` generates model-ready machine features and writes `machine_features`.
 - `app/`, `app/pages/`, `data/`, `db/`, `models/`, and `tests/` exist as the implementation skeleton.
 
 ## Baseline Flow
@@ -100,6 +101,15 @@ PY
 ```
 
 Validation runs before writing cleaned sample CSV data and stores blocking data quality issues in SQLite when issues are detected.
+
+## Generate Features
+
+```bash
+source .venv/bin/activate
+python -m semipulse.features
+```
+
+Feature generation reads cleaned SQLite tables and writes one row per machine to `machine_features`.
 
 ## Prompt Execution
 
