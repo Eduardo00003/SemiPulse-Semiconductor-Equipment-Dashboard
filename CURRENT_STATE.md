@@ -26,21 +26,17 @@ Last updated: 2026-05-08
 - `app/pages/maintenance_risk.py` ranks machines by simulated maintenance risk and provides filters/detail context.
 - `app/pages/defect_trends.py` and `app/pages/downtime_analysis.py` show simulated defect and downtime analysis.
 - `app/pages/model_performance.py` displays simulated model metrics, confusion matrix, metadata, and recall context.
+- `app/pages/data_explorer.py` and `semipulse/exports.py` support table previews and CSV/JSON exports.
 
 ## What Is Missing
 
-- Streamlit app under `app/`.
-- Remaining dashboard page after Overview, Data Upload / Load, Machine Health, Maintenance Risk, Defect Trends, Downtime Analysis, and Model Performance.
-- CSV/JSON export helpers.
 - Docker support.
 
 ## Known Issues and Limitations
 
-- There is no runnable dashboard yet.
-- There is no sample dataset yet.
-- There is no SQLite database yet.
-- There are no tests yet.
-- The baseline flow is documented but not implemented at this stage.
+- Docker support is not implemented yet.
+- The dataset is simulated and model metrics do not represent real semiconductor factory performance.
+- SQLite is used for local MVP persistence, not production concurrency.
 
 ## Current Commands
 
@@ -96,8 +92,8 @@ Local environment note: `python` is not available before virtual environment act
 | Feature engineering | Implemented |
 | Model training | Implemented |
 | Risk scoring | Implemented |
-| Streamlit dashboard | Overview, Data Upload, Machine Health, Maintenance Risk, Defect Trends, Downtime Analysis, and Model Performance implemented |
-| Exports | Not implemented |
+| Streamlit dashboard | All MVP pages implemented |
+| Exports | Implemented |
 | Docker | Not implemented |
 
 ## Baseline Freeze

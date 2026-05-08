@@ -6,6 +6,7 @@ import streamlit as st
 
 from app.pages import (
     data_upload,
+    data_explorer,
     defect_trends,
     downtime_analysis,
     machine_health,
@@ -56,6 +57,8 @@ def main() -> None:
         downtime_analysis.render()
     elif selected_page == "Model Performance":
         model_performance.render()
+    elif selected_page == "Data Explorer":
+        data_explorer.render()
     else:
         _render_placeholder(selected_page)
 

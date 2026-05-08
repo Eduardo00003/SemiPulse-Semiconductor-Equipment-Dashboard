@@ -85,6 +85,24 @@ def read_table(
     return pd.read_sql_query(query, connection)
 
 
+def list_tables(connection: sqlite3.Connection) -> list[str]:
+    """List whitelisted SemiPulse tables that exist in SQLite."""
+
+    rows = connection.execute("SELECT name FROM sqlite_master WHERE type = 'table'").fetchall()
+    existing = {row[0] for row in rows}
+    return [table for table in REQUIRED_TABLES if table in existing]
+
+
+def read_table_view(
+    connection: sqlite3.Connection,
+    table_name: str,
+    limit: int | None = 500,
+) -> pd.DataFrame:
+    """Read a whitelisted table for dashboard exploration."""
+
+    return read_table(connection, table_name, limit=limit)
+
+
 def _read_sample_csvs(data_dir: Path) -> dict[str, pd.DataFrame]:
     datasets: dict[str, pd.DataFrame] = {}
     for table in SOURCE_TABLES:

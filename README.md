@@ -51,6 +51,7 @@ Reusable data, model, database, and export logic will live in `semipulse/`. Stre
 - `app/pages/maintenance_risk.py` shows ranked simulated maintenance risk with filters and machine details.
 - `app/pages/defect_trends.py` and `app/pages/downtime_analysis.py` show defect and downtime analysis views.
 - `app/pages/model_performance.py` shows simulated-data metrics, confusion matrix, and model metadata.
+- `app/pages/data_explorer.py` and `semipulse/exports.py` provide table previews and CSV/JSON exports.
 - `app/`, `app/pages/`, `data/`, `db/`, `models/`, and `tests/` exist as the implementation skeleton.
 
 ## Baseline Flow
@@ -135,7 +136,9 @@ source .venv/bin/activate
 streamlit run app/streamlit_app.py
 ```
 
-The dashboard currently includes Overview, Data Upload / Load, Machine Health, Maintenance Risk, Defect Trends, Downtime Analysis, and Model Performance pages.
+The dashboard currently includes Overview, Data Upload / Load, Machine Health, Maintenance Risk, Defect Trends, Downtime Analysis, Model Performance, and Data Explorer pages.
+
+Exports are available for ranked risk predictions, machine features, model metrics, and selected SQLite table views.
 
 ## Prompt Execution
 
