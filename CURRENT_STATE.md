@@ -19,11 +19,12 @@ Last updated: 2026-05-08
 - `semipulse/data_loader.py` cleans CSV data, builds a machine-level analytical table, and rebuilds SQLite from CSVs.
 - `semipulse/features.py` generates machine-level model features and stores `machine_features`.
 - `semipulse/model.py`, `semipulse/predict.py`, and `semipulse/metrics.py` train a local scikit-learn model, save artifacts, and store risk predictions.
+- `app/streamlit_app.py` and `app/pages/overview.py` provide the Streamlit shell and Overview dashboard.
 
 ## What Is Missing
 
 - Streamlit app under `app/`.
-- Dashboard pages.
+- Remaining dashboard pages after Overview.
 - CSV/JSON export helpers.
 - Docker support.
 
@@ -89,7 +90,7 @@ Local environment note: `python` is not available before virtual environment act
 | Feature engineering | Implemented |
 | Model training | Implemented |
 | Risk scoring | Implemented |
-| Streamlit dashboard | Not implemented |
+| Streamlit dashboard | Overview implemented |
 | Exports | Not implemented |
 | Docker | Not implemented |
 

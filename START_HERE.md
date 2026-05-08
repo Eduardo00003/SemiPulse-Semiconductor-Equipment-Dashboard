@@ -11,6 +11,8 @@ This document is the navigation map for SemiPulse. At the prompt-01 baseline, mo
 
 ## Implemented App and Pipeline Files
 
+- Streamlit entrypoint: `app/streamlit_app.py`
+- Overview page: `app/pages/overview.py`
 - Config: `semipulse/config.py`
 - Logging helpers: `semipulse/logging_utils.py`
 - Sample data generator: `semipulse/sample_data.py`
@@ -26,7 +28,6 @@ This document is the navigation map for SemiPulse. At the prompt-01 baseline, mo
 
 ## Planned App and Pipeline Files
 
-- Streamlit entrypoint: `app/streamlit_app.py`
 - Dashboard pages: `app/pages/`
 - Exports: `semipulse/exports.py`
 - Plot helpers: `semipulse/plots.py`
