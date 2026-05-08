@@ -14,13 +14,14 @@ This document is the navigation map for SemiPulse. At the prompt-01 baseline, mo
 - Config: `semipulse/config.py`
 - Logging helpers: `semipulse/logging_utils.py`
 - Sample data generator: `semipulse/sample_data.py`
+- SQLite connection helpers: `semipulse/database.py`
+- SQLite schema helpers: `semipulse/schema.py`
+- SQLite schema: `db/schema.sql`
 
 ## Planned App and Pipeline Files
 
 - Streamlit entrypoint: `app/streamlit_app.py`
 - Dashboard pages: `app/pages/`
-- SQLite connection helpers: `semipulse/database.py`
-- SQLite schema helpers: `semipulse/schema.py`
 - Data validation: `semipulse/validation.py`
 - Data loading and merging: `semipulse/data_loader.py`
 - Feature generation: `semipulse/features.py`
@@ -29,7 +30,6 @@ This document is the navigation map for SemiPulse. At the prompt-01 baseline, mo
 - Metrics: `semipulse/metrics.py`
 - Exports: `semipulse/exports.py`
 - Plot helpers: `semipulse/plots.py`
-- SQLite schema: `db/schema.sql`
 - Sample data: `data/sample/`
 - Tests: `tests/`
 - Local run dependencies: `requirements.txt`

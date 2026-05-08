@@ -13,11 +13,12 @@ Last updated: 2026-05-08
 - `semipulse/config.py` loads environment-variable settings with defaults.
 - `semipulse/logging_utils.py` provides a reusable logging setup helper.
 - `semipulse/sample_data.py` generates simulated machine, sensor, maintenance, and defect CSVs.
+- `db/schema.sql` defines the required SQLite MVP tables.
+- `semipulse/database.py` can initialize SQLite and load sample CSVs.
 
 ## What Is Missing
 
 - Streamlit app under `app/`.
-- SQLite schema and database helpers.
 - Validation and cleaning pipeline.
 - Feature engineering pipeline.
 - scikit-learn model training and risk scoring.
@@ -81,7 +82,7 @@ Local environment note: `python` is not available before virtual environment act
 | --- | --- |
 | Repo structure and config | Implemented |
 | Sample data | Implemented |
-| SQLite database | Not implemented |
+| SQLite database | Implemented |
 | Data validation | Not implemented |
 | Data cleaning and merging | Not implemented |
 | Feature engineering | Not implemented |

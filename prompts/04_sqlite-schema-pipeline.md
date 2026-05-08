@@ -1,4 +1,4 @@
-Status: NOT_STARTED
+Status: COMPLETED
 
 # 04 SQLite Schema Pipeline
 

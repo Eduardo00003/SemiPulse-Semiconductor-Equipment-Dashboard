@@ -39,6 +39,7 @@ Reusable data, model, database, and export logic will live in `semipulse/`. Stre
 - `semipulse/config.py` loads environment-driven runtime settings.
 - `semipulse/logging_utils.py` configures standard-library logging.
 - `semipulse/sample_data.py` generates reproducible simulated sample CSVs.
+- `semipulse/database.py` and `semipulse/schema.py` initialize SQLite and load sample CSVs.
 - `app/`, `app/pages/`, `data/`, `db/`, `models/`, and `tests/` exist as the implementation skeleton.
 
 ## Baseline Flow
@@ -85,6 +86,17 @@ python -m semipulse.sample_data
 ```
 
 This writes simulated CSVs to `data/sample/`.
+
+## Build SQLite Database
+
+```bash
+source .venv/bin/activate
+python - <<'PY'
+from semipulse.database import initialize_database, load_sample_csvs_to_sqlite
+initialize_database(reset=True)
+print(load_sample_csvs_to_sqlite(reset=False))
+PY
+```
 
 ## Prompt Execution
 
