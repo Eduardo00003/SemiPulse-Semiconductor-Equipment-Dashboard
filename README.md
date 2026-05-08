@@ -43,6 +43,7 @@ Reusable data, model, database, and export logic will live in `semipulse/`. Stre
 - `semipulse/validation.py` validates required columns, timestamps, duplicates, numeric fields, and machine references.
 - `semipulse/data_loader.py` loads, cleans, validates, merges, and rebuilds SQLite from CSVs.
 - `semipulse/features.py` generates model-ready machine features and writes `machine_features`.
+- `semipulse/model.py`, `semipulse/predict.py`, and `semipulse/metrics.py` train a local scikit-learn model, score risk, and store predictions.
 - `app/`, `app/pages/`, `data/`, `db/`, `models/`, and `tests/` exist as the implementation skeleton.
 
 ## Baseline Flow
@@ -110,6 +111,15 @@ python -m semipulse.features
 ```
 
 Feature generation reads cleaned SQLite tables and writes one row per machine to `machine_features`.
+
+## Train Model and Score Risk
+
+```bash
+source .venv/bin/activate
+python -m semipulse.model
+```
+
+This trains a local `RandomForestClassifier` on simulated features, writes `models/risk_model.pkl` and `models/model_metadata.json`, and stores risk scores in SQLite. Metrics are simulated-data performance only.
 
 ## Prompt Execution
 

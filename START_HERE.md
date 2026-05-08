@@ -20,14 +20,14 @@ This document is the navigation map for SemiPulse. At the prompt-01 baseline, mo
 - Data validation: `semipulse/validation.py`
 - Data loading and merging: `semipulse/data_loader.py`
 - Feature generation: `semipulse/features.py`
+- Model training: `semipulse/model.py`
+- Prediction/risk scoring: `semipulse/predict.py`
+- Metrics: `semipulse/metrics.py`
 
 ## Planned App and Pipeline Files
 
 - Streamlit entrypoint: `app/streamlit_app.py`
 - Dashboard pages: `app/pages/`
-- Model training: `semipulse/model.py`
-- Prediction/risk scoring: `semipulse/predict.py`
-- Metrics: `semipulse/metrics.py`
 - Exports: `semipulse/exports.py`
 - Plot helpers: `semipulse/plots.py`
 - Sample data: `data/sample/`

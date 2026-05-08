@@ -1,4 +1,4 @@
-Status: NOT_STARTED
+Status: COMPLETED
 
 # 08 Model Training Risk Scoring
 

@@ -18,11 +18,11 @@ Last updated: 2026-05-08
 - `semipulse/validation.py` validates CSV/DataFrame contracts and can persist data quality issues.
 - `semipulse/data_loader.py` cleans CSV data, builds a machine-level analytical table, and rebuilds SQLite from CSVs.
 - `semipulse/features.py` generates machine-level model features and stores `machine_features`.
+- `semipulse/model.py`, `semipulse/predict.py`, and `semipulse/metrics.py` train a local scikit-learn model, save artifacts, and store risk predictions.
 
 ## What Is Missing
 
 - Streamlit app under `app/`.
-- scikit-learn model training and risk scoring.
 - Dashboard pages.
 - CSV/JSON export helpers.
 - Docker support.
@@ -73,7 +73,7 @@ Local environment note: `python` is not available before virtual environment act
 
 ## Current Model Limitations
 
-- No model has been implemented yet.
+- A local scikit-learn baseline model has been implemented.
 - Future model metrics must be labeled as simulated-data performance only.
 - The project must use local scikit-learn modeling, not external LLMs or large downloaded AI models.
 
@@ -87,8 +87,8 @@ Local environment note: `python` is not available before virtual environment act
 | Data validation | Implemented |
 | Data cleaning and merging | Implemented |
 | Feature engineering | Implemented |
-| Model training | Not implemented |
-| Risk scoring | Not implemented |
+| Model training | Implemented |
+| Risk scoring | Implemented |
 | Streamlit dashboard | Not implemented |
 | Exports | Not implemented |
 | Docker | Not implemented |
