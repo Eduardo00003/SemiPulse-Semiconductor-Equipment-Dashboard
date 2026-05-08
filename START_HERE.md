@@ -64,7 +64,7 @@ streamlit run app/streamlit_app.py
 docker compose up --build
 ```
 
-These commands become available as the relevant prompts create the underlying files.
+The Docker command uses named volumes for generated data, the SQLite database, and model artifacts.
 
 Local note: this environment has `python3` available on `PATH`; after virtual environment activation, use the venv's `python`.
 

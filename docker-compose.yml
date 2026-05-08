@@ -1,0 +1,23 @@
+services:
+  semipulse:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "${SEMIPULSE_STREAMLIT_PORT:-8501}:8501"
+    environment:
+      SEMIPULSE_DB_PATH: ${SEMIPULSE_DB_PATH:-db/semipulse.db}
+      SEMIPULSE_DATA_DIR: ${SEMIPULSE_DATA_DIR:-data/sample}
+      SEMIPULSE_MODEL_DIR: ${SEMIPULSE_MODEL_DIR:-models}
+      SEMIPULSE_LOG_LEVEL: ${SEMIPULSE_LOG_LEVEL:-INFO}
+      SEMIPULSE_RANDOM_SEED: ${SEMIPULSE_RANDOM_SEED:-42}
+      SEMIPULSE_PREDICTION_WINDOW_DAYS: ${SEMIPULSE_PREDICTION_WINDOW_DAYS:-14}
+    volumes:
+      - semipulse_data:/app/data
+      - semipulse_db:/app/db
+      - semipulse_models:/app/models
+
+volumes:
+  semipulse_data:
+  semipulse_db:
+  semipulse_models:

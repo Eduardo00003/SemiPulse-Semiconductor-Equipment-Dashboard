@@ -27,14 +27,15 @@ Last updated: 2026-05-08
 - `app/pages/defect_trends.py` and `app/pages/downtime_analysis.py` show simulated defect and downtime analysis.
 - `app/pages/model_performance.py` displays simulated model metrics, confusion matrix, metadata, and recall context.
 - `app/pages/data_explorer.py` and `semipulse/exports.py` support table previews and CSV/JSON exports.
+- `Dockerfile`, `docker-compose.yml`, and `.dockerignore` support containerized Streamlit execution with Docker-managed runtime volumes.
 
 ## What Is Missing
 
-- Docker support.
+- Final documentation and QA polish.
 
 ## Known Issues and Limitations
 
-- Docker support is not implemented yet.
+- Docker support has been added; final QA still needs to confirm the local Docker build in the target environment.
 - The dataset is simulated and model metrics do not represent real semiconductor factory performance.
 - SQLite is used for local MVP persistence, not production concurrency.
 
@@ -94,7 +95,7 @@ Local environment note: `python` is not available before virtual environment act
 | Risk scoring | Implemented |
 | Streamlit dashboard | All MVP pages implemented |
 | Exports | Implemented |
-| Docker | Not implemented |
+| Docker | Implemented |
 
 ## Baseline Freeze
 

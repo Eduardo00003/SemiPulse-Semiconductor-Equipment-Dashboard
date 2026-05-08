@@ -560,6 +560,10 @@ streamlit run app/streamlit_app.py
 docker compose up --build
 ```
 
+The compose service runs `streamlit run app/streamlit_app.py` on container port `8501`. The host port is configurable with `SEMIPULSE_STREAMLIT_PORT`, defaulting to `8501`.
+
+Compose persists `/app/data`, `/app/db`, and `/app/models` with Docker-managed named volumes. This keeps generated data, the SQLite database, and model artifacts across restarts without depending on local host-directory sharing.
+
 ---
 
 ## Testing Strategy

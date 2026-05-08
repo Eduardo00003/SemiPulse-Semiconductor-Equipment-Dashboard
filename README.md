@@ -140,6 +140,20 @@ The dashboard currently includes Overview, Data Upload / Load, Machine Health, M
 
 Exports are available for ranked risk predictions, machine features, model metrics, and selected SQLite table views.
 
+## Docker
+
+```bash
+docker compose up --build
+```
+
+The dashboard is available at `http://localhost:8501` by default. Override the host port with `SEMIPULSE_STREAMLIT_PORT`.
+
+Compose uses Docker-managed volumes for `/app/data`, `/app/db`, and `/app/models` so generated sample data, SQLite state, and model artifacts persist without requiring host-directory mounts.
+
+## Deployment Notes
+
+For a portfolio demo, deploy the Streamlit app with the same entrypoint: `app/streamlit_app.py`. Streamlit Community Cloud, Render, Railway, and Fly.io can all run this app as long as `requirements.txt` is installed and the environment variables from `.env.example` are configured. Generate sample data from the UI or run the pipeline commands before demoing persisted results.
+
 ## Prompt Execution
 
 Development is driven by the prompt files in `prompts/`, in numeric order from `01_project-freeze-and-docs.md` through `17_docs-qa-polish.md`.

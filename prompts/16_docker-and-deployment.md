@@ -1,4 +1,4 @@
-Status: NOT_STARTED
+Status: COMPLETED
 
 # 16 Docker and Deployment
 
