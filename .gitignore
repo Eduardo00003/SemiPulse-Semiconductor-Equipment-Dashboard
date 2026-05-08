@@ -32,6 +32,7 @@ models/model_metadata.json
 # Logs
 *.log
 logs/
+problems*/
 
 # OS and editor files
 .DS_Store
