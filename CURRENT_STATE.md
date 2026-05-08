@@ -8,12 +8,14 @@ Last updated: 2026-05-08
 - Technical guidance exists in `TECHNICAL.md`.
 - The full 17-file implementation prompt sequence exists in `prompts/`.
 - Prompt 01 documentation files have been added.
+- Final project directories exist for `app/`, `semipulse/`, `data/`, `db/`, `models/`, and `tests/`.
+- `requirements.txt` exists with the MVP Python dependencies.
+- `semipulse/config.py` loads environment-variable settings with defaults.
+- `semipulse/logging_utils.py` provides a reusable logging setup helper.
 
 ## What Is Missing
 
-- Python package structure under `semipulse/`.
 - Streamlit app under `app/`.
-- Dependency file `requirements.txt`.
 - Sample data generator.
 - SQLite schema and database helpers.
 - Validation and cleaning pipeline.
@@ -77,6 +79,7 @@ Local environment note: `python` is not available before virtual environment act
 
 | Capability | Status |
 | --- | --- |
+| Repo structure and config | Implemented |
 | Sample data | Not implemented |
 | SQLite database | Not implemented |
 | Data validation | Not implemented |

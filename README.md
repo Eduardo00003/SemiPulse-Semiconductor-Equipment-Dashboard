@@ -34,6 +34,12 @@ CSV / generated sample data
 
 Reusable data, model, database, and export logic will live in `semipulse/`. Streamlit UI code will live in `app/`.
 
+## Current Structure
+
+- `semipulse/config.py` loads environment-driven runtime settings.
+- `semipulse/logging_utils.py` configures standard-library logging.
+- `app/`, `app/pages/`, `data/`, `db/`, `models/`, and `tests/` exist as the implementation skeleton.
+
 ## Baseline Flow
 
 The intended runnable flow is:
@@ -54,8 +60,6 @@ python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 ```
-
-These commands will become active once the repository structure and dependency file are created in prompt 02.
 
 ## Planned Runtime Commands
 

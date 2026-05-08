@@ -9,11 +9,15 @@ This document is the navigation map for SemiPulse. At the prompt-01 baseline, mo
 - Prompt generator spec: `promptForPrompt.txt`
 - Implementation prompts: `prompts/`
 
+## Implemented App and Pipeline Files
+
+- Config: `semipulse/config.py`
+- Logging helpers: `semipulse/logging_utils.py`
+
 ## Planned App and Pipeline Files
 
 - Streamlit entrypoint: `app/streamlit_app.py`
 - Dashboard pages: `app/pages/`
-- Config: `semipulse/config.py`
 - SQLite connection helpers: `semipulse/database.py`
 - SQLite schema helpers: `semipulse/schema.py`
 - Data validation: `semipulse/validation.py`
