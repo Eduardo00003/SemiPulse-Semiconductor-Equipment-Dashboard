@@ -14,6 +14,7 @@ This document is the navigation map for SemiPulse. At the prompt-01 baseline, mo
 - Streamlit entrypoint: `app/streamlit_app.py`
 - Overview page: `app/pages/overview.py`
 - Data Upload / Load page: `app/pages/data_upload.py`
+- Machine Health page: `app/pages/machine_health.py`
 - Config: `semipulse/config.py`
 - Logging helpers: `semipulse/logging_utils.py`
 - Sample data generator: `semipulse/sample_data.py`

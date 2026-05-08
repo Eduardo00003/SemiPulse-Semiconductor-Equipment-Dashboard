@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import streamlit as st
 
-from app.pages import data_upload, overview
+from app.pages import data_upload, machine_health, overview
 
 
 PAGE_NAMES = [
@@ -38,6 +38,8 @@ def main() -> None:
         overview.render()
     elif selected_page == "Data Upload / Load":
         data_upload.render()
+    elif selected_page == "Machine Health":
+        machine_health.render()
     else:
         _render_placeholder(selected_page)
 

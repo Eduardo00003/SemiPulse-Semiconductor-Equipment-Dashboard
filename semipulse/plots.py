@@ -32,3 +32,37 @@ def prepare_downtime_summary(maintenance: pd.DataFrame) -> pd.DataFrame:
         .sort_values("downtime_hours", ascending=False)
     )
     return summary.reset_index(drop=True)
+
+
+def prepare_sensor_timeseries(sensor_readings: pd.DataFrame, machine_id: str | None = None) -> pd.DataFrame:
+    """Prepare sensor readings for time-series charts."""
+
+    if sensor_readings.empty:
+        return pd.DataFrame(columns=["timestamp", "temperature", "vibration", "pressure", "power_draw"])
+    frame = sensor_readings.copy()
+    if machine_id is not None and "machine_id" in frame:
+        frame = frame[frame["machine_id"].astype(str) == str(machine_id)]
+    frame["timestamp"] = pd.to_datetime(frame["timestamp"], errors="coerce", format="mixed")
+    return frame.dropna(subset=["timestamp"]).sort_values("timestamp").reset_index(drop=True)
+
+
+def prepare_fleet_sensor_averages(sensor_readings: pd.DataFrame) -> pd.DataFrame:
+    """Prepare daily fleet-average sensor values."""
+
+    if sensor_readings.empty:
+        return pd.DataFrame(columns=["timestamp", "temperature", "vibration", "pressure", "power_draw"])
+    frame = prepare_sensor_timeseries(sensor_readings)
+    if frame.empty:
+        return frame
+    frame["timestamp"] = frame["timestamp"].dt.floor("D")
+    return (
+        frame.groupby("timestamp", as_index=False)
+        .agg(
+            temperature=("temperature", "mean"),
+            vibration=("vibration", "mean"),
+            pressure=("pressure", "mean"),
+            power_draw=("power_draw", "mean"),
+        )
+        .sort_values("timestamp")
+        .reset_index(drop=True)
+    )

@@ -47,6 +47,7 @@ Reusable data, model, database, and export logic will live in `semipulse/`. Stre
 - `app/streamlit_app.py` launches the Streamlit shell and Overview page.
 - `semipulse/pipeline.py` orchestrates sample generation, database rebuild, feature generation, and model scoring.
 - `app/pages/data_upload.py` provides the Data Upload / Load dashboard page.
+- `app/pages/machine_health.py` shows sensor trends, fleet averages, and machine detail context.
 - `app/`, `app/pages/`, `data/`, `db/`, `models/`, and `tests/` exist as the implementation skeleton.
 
 ## Baseline Flow
@@ -131,7 +132,7 @@ source .venv/bin/activate
 streamlit run app/streamlit_app.py
 ```
 
-The Data Upload / Load page can generate sample data, validate CSVs, preview datasets, and rebuild the SQLite-backed demo pipeline.
+The dashboard currently includes Overview, Data Upload / Load, and Machine Health pages.
 
 ## Prompt Execution
 

@@ -22,11 +22,12 @@ Last updated: 2026-05-08
 - `app/streamlit_app.py` and `app/pages/overview.py` provide the Streamlit shell and Overview dashboard.
 - `semipulse/pipeline.py` orchestrates the demo pipeline for tests and UI actions.
 - `app/pages/data_upload.py` provides sample loading, CSV upload, validation, previews, and pipeline rebuild actions.
+- `app/pages/machine_health.py` shows sensor trends, fleet averages, machine details, and heuristic anomaly indicators.
 
 ## What Is Missing
 
 - Streamlit app under `app/`.
-- Remaining dashboard pages after Overview and Data Upload / Load.
+- Remaining dashboard pages after Overview, Data Upload / Load, and Machine Health.
 - CSV/JSON export helpers.
 - Docker support.
 
@@ -92,7 +93,7 @@ Local environment note: `python` is not available before virtual environment act
 | Feature engineering | Implemented |
 | Model training | Implemented |
 | Risk scoring | Implemented |
-| Streamlit dashboard | Overview and Data Upload implemented |
+| Streamlit dashboard | Overview, Data Upload, and Machine Health implemented |
 | Exports | Not implemented |
 | Docker | Not implemented |
 
