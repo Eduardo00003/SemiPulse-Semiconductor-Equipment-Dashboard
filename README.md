@@ -126,7 +126,7 @@ Compose uses Docker-managed volumes for `/app/data`, `/app/db`, and `/app/models
 pytest
 ```
 
-The current test suite covers the local data pipeline, validation rules, SQLite helpers, feature generation, model training, pipeline orchestration, and export helpers.
+The current test suite covers the local data pipeline, validation rules, SQLite helpers, feature generation, model training, pipeline orchestration, export helpers, and Streamlit app import/render behavior.
 
 ## Deployment Notes
 

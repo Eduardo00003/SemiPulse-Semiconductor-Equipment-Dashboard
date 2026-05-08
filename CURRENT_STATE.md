@@ -49,7 +49,7 @@ Observed results:
 - Required path verification returned `missing: []`.
 - Export verification returned true for risk rankings CSV, machine features CSV, model metrics JSON, and selected table CSV.
 - Page registry verification confirmed all eight expected dashboard pages are wired and expose `render()` functions.
-- `pytest` passed: 28 tests passed.
+- `pytest` passed: 29 tests passed.
 - Local Streamlit launch returned HTTP 200 at `http://localhost:8501`.
 - Docker Compose config validated; `docker compose up --build` rebuilt from cache, started Streamlit, and returned HTTP 200 at `http://localhost:8501`.
 
