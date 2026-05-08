@@ -16,6 +16,8 @@ This document is the navigation map for SemiPulse. At the prompt-01 baseline, mo
 - Data Upload / Load page: `app/pages/data_upload.py`
 - Machine Health page: `app/pages/machine_health.py`
 - Maintenance Risk page: `app/pages/maintenance_risk.py`
+- Defect Trends page: `app/pages/defect_trends.py`
+- Downtime Analysis page: `app/pages/downtime_analysis.py`
 - Config: `semipulse/config.py`
 - Logging helpers: `semipulse/logging_utils.py`
 - Sample data generator: `semipulse/sample_data.py`
