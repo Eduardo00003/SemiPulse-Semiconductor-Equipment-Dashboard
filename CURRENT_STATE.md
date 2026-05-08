@@ -38,12 +38,13 @@ Useful inspection commands:
 ```bash
 ls -la
 find prompts -maxdepth 1 -type f | sort
+python3 --version
 ```
 
 Planned commands after later prompts:
 
 ```bash
-python -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 pytest
@@ -53,6 +54,8 @@ python -m semipulse.model
 streamlit run app/streamlit_app.py
 docker compose up --build
 ```
+
+Local environment note: `python` is not available before virtual environment activation in this shell, but `python3` is available and was verified as Python 3.13.5.
 
 ## Current Dataset Assumptions
 

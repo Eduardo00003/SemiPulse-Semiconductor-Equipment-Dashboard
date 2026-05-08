@@ -50,7 +50,7 @@ The implementation prompts in `prompts/` build this flow incrementally while kee
 ## Local Setup
 
 ```bash
-python -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 ```
@@ -69,6 +69,8 @@ docker compose up --build
 ```
 
 At the prompt-01 baseline, these commands are documented targets. The implementation modules are created in later prompts.
+
+On this local macOS environment, use `python3` for creating the virtual environment. After activation, `.venv/bin/python` provides the `python` command used by later project commands.
 
 ## Prompt Execution
 

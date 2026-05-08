@@ -41,7 +41,7 @@ This document is the navigation map for SemiPulse. At the prompt-01 baseline, mo
 ## Planned Local Commands
 
 ```bash
-python -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 pytest
@@ -52,6 +52,8 @@ docker compose up --build
 ```
 
 These commands become available as the relevant prompts create the underlying files.
+
+Local note: this environment has `python3` available on `PATH`; after virtual environment activation, use the venv's `python`.
 
 ## Non-Negotiable Constraints
 
